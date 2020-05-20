@@ -3,7 +3,7 @@
 #include <QMessageBox>
 #include <QDebug>
 #include "connexion.h"
-
+#include "tahaa.h"
 
 
 int main(int argc, char *argv[])

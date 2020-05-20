@@ -59,7 +59,7 @@ void DrilldownSlice::updateLabel()
     label += QString::number(this->value());
     label += ", ";
     label += QString::number(this->percentage() * 100, 'f', 1);
- label += "%";
+
     setLabel(label);
 }
 

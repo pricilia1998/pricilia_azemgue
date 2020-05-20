@@ -81,12 +81,12 @@ QSqlQueryModel * tache::rechercher(QString n, QString tri , QDate d) {
       if (tri !="")
 
                model->setQuery("select * from tache where (nom LIKE '"+n+"%' ) order by nom "+tri+" ");
+             else
 
 
 
 
-
-   if (tri =="") model->setQuery("select * from tache where (nom LIKE '"+n+"%' ) ");
+  model->setQuery("select * from tache where ((nom LIKE '"+n+"%' ) ");
 
 
                 return  model;

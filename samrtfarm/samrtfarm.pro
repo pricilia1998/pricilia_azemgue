@@ -27,23 +27,34 @@ CONFIG += c++11
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp \
     tache.cpp \
     connexion.cpp \
     employe.cpp \
     drilldownchart.cpp \
-    drilldownslice.cpp
+    drilldownslice.cpp \
+    tahaa.cpp \
+    mainwindow.cpp \
+    fournisseur.cpp \
+    nourriture.cpp \
+    template.cpp
 
 HEADERS += \
-        mainwindow.h \
     tache.h \
     connexion.h \
     employe.h \
     drilldownchart.h \
-    drilldownslice.h
+    drilldownslice.h \
+    tache.h \
+    tahaa.h \
+    mainwindow.h \
+    fournisseur.h \
+    nourriture.h \
+    template.h
 
 FORMS += \
-        mainwindow.ui
+    tahaa.ui \
+    mainwindow.ui \
+    template.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
