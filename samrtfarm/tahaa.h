@@ -70,6 +70,11 @@ void on_emplystats_clicked();
 
 
 
+void on_pushButton_clicked();
+void icon() ;
+
+void on_pushButton_2_clicked();
+
 private:
     Ui::tahaa *ui;
     employe tmpemploye;

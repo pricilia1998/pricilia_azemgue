@@ -52,6 +52,12 @@ private slots:
 
     void on_nomNour_textEdited(const QString &arg1);
 
+   // void on_pushButton_clicked();
+
+    void on_imprimerNour_clicked();
+
+    void on_imprimerFour_clicked();
+
 private:
     Ui::Template *ui;
     fournisseur tmpfournisseur;

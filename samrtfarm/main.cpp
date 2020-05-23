@@ -13,6 +13,7 @@ int main(int argc, char *argv[])
     bool test= c.ouvrirConnexion();
     MainWindow w;  if(test)
     {
+        w.setWindowTitle("Smart Farm");
         w.show();
 
 

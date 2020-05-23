@@ -10,6 +10,8 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     ui->password->setEchoMode(QLineEdit::Password);
+
+   setWindowIcon(QIcon("icon/icon.png"));
 }
 
 MainWindow::~MainWindow()
@@ -18,7 +20,7 @@ MainWindow::~MainWindow()
 }
 
 void MainWindow::on_pushButton_clicked()
-{  if((ui->username->text()=="taha") && (ui->password->text()=="111112111112")) {
+{  if((ui->username->text()=="taha") && (ui->password->text()=="taha")) {
 
     ui->stackedWidget->setCurrentIndex(1); }
     else {
@@ -27,6 +29,8 @@ void MainWindow::on_pushButton_clicked()
                            msgBox.setWindowTitle( "Erreur de connexion");
                            msgBox.setText(tr("Vérifier vos coordonnées !"));
                            msgBox.addButton(tr("Réssayer"), QMessageBox::NoRole);
+                           QPixmap pixmap = QPixmap("icon/icon.png");
+                             msgBox.setWindowIcon(QIcon(pixmap));
                            msgBox.exec();
     }
 
@@ -41,14 +45,16 @@ void MainWindow::on_pushButton_3_clicked()
 {
    tahaa t;
     t.show();
-    MainWindow::hide();
+   // MainWindow::hide();
+       t.setWindowTitle("Smart Farm");
     t.exec();
 }
 
 void MainWindow::on_pushButton_4_clicked()
 {  Template p ;
     p.show();
-    MainWindow::hide();
+    //MainWindow::hide();
+       p.setWindowTitle("Smart Farm");
     p.exec();
 
 }

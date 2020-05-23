@@ -1,7 +1,7 @@
 #include "tahaa.h"
 #include "ui_tahaa.h"
-
-
+#include "template.h"
+#include "mainwindow.h"
 
 #include <QMessageBox>
 #include <QDate>
@@ -22,7 +22,7 @@
 tahaa::tahaa(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::tahaa)
-{
+{setWindowIcon(QIcon("icon/icon.png"));
     ui->setupUi(this);
     ui->tableemp->setModel(tmpemploye.afficher(""));
     ui->tableView2->setModel(tableView2.afficher("",""));
@@ -31,6 +31,18 @@ tahaa::tahaa(QWidget *parent) :
     ui->dateEdit_rech->setDate(Datezuj);
     ui->datedeb->setDate(Datezuj);
     ui->datelm->setDate(Datezuj);
+    //----------------------------
+
+
+icon() ;
+
+
+
+
+
+
+
+
 
 
 //liste emloyee fetchh
@@ -112,7 +124,7 @@ tahaa::~tahaa()
 
 
 void tahaa::on_pb_ajouter_clicked()
-{
+{QPixmap pixmap = QPixmap("icon/icon.png");
     QString cin = ui->lineEdit_id->text();
     QString nom= ui->lineEdit_nom->text();
     QString prenom= ui->lineEdit_prenom->text();
@@ -130,6 +142,8 @@ void tahaa::on_pb_ajouter_clicked()
       msgBox.setText(tr("Employé ajouté avec succée."));
       QAbstractButton* pButtonYes = msgBox.addButton(tr("Fermer"), QMessageBox::YesRole);
 
+
+      msgBox.setWindowIcon(QIcon(pixmap));
       msgBox.exec();
 
 
@@ -152,6 +166,24 @@ ui->tableemp->setModel(tmpemploye.afficher(""));
       }
 
 //fin liste emloyee fetch combo boxxxxx
+   bool exist = false ;
+   int i ;
+   for(i=0; i < ui->ez->count(); i++ ) {
+       if (ui->ez->tabText(i) =="Employes Stats") {
+           exist=true;
+           break ;
+       }
+
+   }
+
+
+
+   if (exist) StatsEmply() ;
+
+    else { StatsEmply() ; ;
+    ui->ez->removeTab(i); }
+
+
 
 }
   else {
@@ -161,6 +193,8 @@ ui->tableemp->setModel(tmpemploye.afficher(""));
       msgBox.setText(tr("Erreur dans les champs !"));
       QAbstractButton* pButtonYes = msgBox.addButton(tr("Fermer"), QMessageBox::YesRole);
 
+
+      msgBox.setWindowIcon(QIcon(pixmap));
       msgBox.exec();
 
 }
@@ -192,6 +226,10 @@ void tahaa::on_pb_rechercher_clicked()
          msgBox.setText(tr("Choississez un filtre !"));
          msgBox.setInformativeText("Email, Nom, CIN, Type") ;
          msgBox.addButton(tr("D'accord"), QMessageBox::NoRole);
+
+         QPixmap pixmap = QPixmap("icon/icon.png");
+
+         msgBox.setWindowIcon(QIcon(pixmap));
          msgBox.exec();
 
      }  }
@@ -206,7 +244,7 @@ void tahaa::on_afficher_clicked() {
 
 
 void tahaa::on_pb_suppr_clicked() {
-
+ QPixmap pixmap = QPixmap("icon/icon.png");
     QItemSelectionModel *select = ui->tableemp->selectionModel();
 
    if( select->hasSelection() ) //check if has selection
@@ -219,6 +257,7 @@ void tahaa::on_pb_suppr_clicked() {
        msgBox.setText(tr("Etes-vous sur de supprimer cet employé ?"));
        QAbstractButton* pButtonYes = msgBox.addButton(tr("Supprimer"), QMessageBox::YesRole);
        msgBox.addButton(tr("Annuler"), QMessageBox::NoRole);
+       msgBox.setWindowIcon(QIcon(pixmap));
        msgBox.exec();
 
 
@@ -243,8 +282,26 @@ if (test) {
     msgBox2.setWindowTitle( "Supprimer un employé");
     msgBox2.setText(tr("Employé supprimé."));
     msgBox2.addButton(tr("D'accord"), QMessageBox::NoRole);
-    msgBox2.exec();
 
+
+    msgBox2.setWindowIcon(QIcon(pixmap));
+    msgBox2.exec();
+    bool exist = false ;
+    int i ;
+    for(i=0; i < ui->ez->count(); i++ ) {
+        if (ui->ez->tabText(i) =="Employes Stats") {
+            exist=true;
+            break ;
+        }
+
+    }
+
+
+
+    if (exist) StatsEmply() ;
+
+     else { StatsEmply() ; ;
+     ui->ez->removeTab(i); }
 
   //   QMessageBox::information(nullptr, QObject::tr("Supprimer un employé"),
           //       QObject::tr("employé supprimé.\n"), QMessageBox::NoIcon);
@@ -278,6 +335,9 @@ if (test) {
        msgBox3.setWindowTitle( "Supprimer un employé");
        msgBox3.setText(tr("Erreur lors de la suppression !"));
        msgBox3.addButton(tr("Fermer"), QMessageBox::NoRole);
+
+
+       msgBox3.setWindowIcon(QIcon(pixmap));
        msgBox3.exec();
 
 
@@ -295,6 +355,8 @@ if (test) {
           msgbox4.setWindowTitle( "Supprimer un employé");
           msgbox4.setText(tr("Sélectionner un employé à supprimer d'abord !"));
           msgbox4.addButton(tr("D'accord"), QMessageBox::NoRole);
+
+                msgbox4.setWindowIcon(QIcon(pixmap));
           msgbox4.exec();
 
      //  QMessageBox::information(nullptr, QObject::tr("Supprimer un employé"),
@@ -655,6 +717,7 @@ QString datefich = QDateTime::currentDateTime().toString();
 
 
 void tahaa::on_pb_ajouter2_clicked(){
+    QPixmap pixmap = QPixmap("icon/icon.png");
 
     int id = ui->idtache->text().toInt();
     QString nom= ui->nomtache->text();
@@ -669,19 +732,52 @@ void tahaa::on_pb_ajouter2_clicked(){
   bool test=t.ajouter();
   if(test)
 {
+      QMessageBox msgBox;
+      msgBox.setIcon(QMessageBox::Information);
+      msgBox.setWindowTitle( "Ajouter une tâche");
+      msgBox.setText(tr("Tâche ajoutée avec succée."));
+      QAbstractButton* pButtonYes = msgBox.addButton(tr("D'accord"), QMessageBox::YesRole);
+
+      msgBox.setWindowIcon(QIcon(pixmap));
+      msgBox.exec();
 
 
-QMessageBox::information(nullptr, QObject::tr("Ajouter une tâche"),
-                  QObject::tr("Tâche ajoutée avec succée.\n"
-                              "Click Ok to exit."), QMessageBox::Ok);
 ui->tableView2->setModel(tableView2.afficher("",""));
-StatsTaches() ;
+
+bool exist = false ;
+int i ;
+for(i=0; i < ui->ez->count(); i++ ) {
+    if (ui->ez->tabText(i) =="Tâches Stats") {
+        exist=true;
+        break ;
+    }
 
 }
-  else
-      QMessageBox::critical(nullptr, QObject::tr("Ajouter une tâche"),
-                  QObject::tr("Erreur dans les champs !\n"
-                              "Click Cancel to exit."), QMessageBox::Cancel);
+
+
+
+if (exist) StatsTaches() ;
+
+ else { StatsTaches() ;
+ ui->ez->removeTab(i); }
+
+
+
+
+}
+  else {
+
+      QMessageBox msgBox;
+      msgBox.setIcon(QMessageBox::Critical);
+      msgBox.setWindowTitle( "Ajouter une tâche");
+      msgBox.setText(tr("Erreur dans les champs !"));
+      QAbstractButton* pButtonYes = msgBox.addButton(tr("Fermer"), QMessageBox::NoRole);
+
+      msgBox.setWindowIcon(QIcon(pixmap));
+      msgBox.exec();
+
+
+  }
 
 }
 
@@ -715,7 +811,7 @@ QDate drech = ui->dateEdit_rech->date();
      }
 
 void tahaa::on_supprim2tache_clicked() {
-
+    QPixmap pixmap = QPixmap("icon/icon.png");
 
 
     QItemSelectionModel *select = ui->tableView2->selectionModel();
@@ -729,6 +825,8 @@ void tahaa::on_supprim2tache_clicked() {
        msgBox.setText(tr("Etes-vous sur de supprimer cette tâche ?"));
        QAbstractButton* pButtonYes = msgBox.addButton(tr("Supprimer"), QMessageBox::YesRole);
        msgBox.addButton(tr("Annuler"), QMessageBox::NoRole);
+       msgBox.setWindowIcon(QIcon(pixmap));
+
        msgBox.exec();
 
     if (msgBox.clickedButton()==pButtonYes) {
@@ -746,7 +844,23 @@ if (test) {
      QMessageBox::information(nullptr, QObject::tr("Supprimer une tâche"),
                  QObject::tr("tâche supprimée.\n"), QMessageBox::NoIcon);
    ui->tableView2->setModel(tableView2.afficher("",""));
-StatsTaches() ;
+   bool exist = false ;
+   int i ;
+   for(i=0; i < ui->ez->count(); i++ ) {
+       if (ui->ez->tabText(i) =="Tâches Stats") {
+           exist=true;
+           break ;
+       }
+
+   }
+
+
+
+   if (exist) StatsTaches() ;
+
+    else { StatsTaches() ;
+    ui->ez->removeTab(i); }
+
 }
 
 
@@ -757,6 +871,7 @@ StatsTaches() ;
        msgBox3.setWindowTitle( "Supprimer une tâche");
        msgBox3.setText(tr("Erreur lors de la suppression !"));
        msgBox3.addButton(tr("Fermer"), QMessageBox::NoRole);
+        msgBox3.setWindowIcon(QIcon(pixmap));
        msgBox3.exec();
 
 
@@ -771,6 +886,7 @@ StatsTaches() ;
           msgBox3.setWindowTitle( "Supprimer une tâche");
           msgBox3.setText(tr("Sélectionner une tâche à supprimer d'abord  !"));
           msgBox3.addButton(tr("D'accord"), QMessageBox::NoRole);
+            msgBox3.setWindowIcon(QIcon(pixmap));
           msgBox3.exec();
 
 
@@ -779,7 +895,7 @@ StatsTaches() ;
 }
 
 void tahaa::on_ModifierEmp_clicked() {
-
+QPixmap pixmap = QPixmap("icon/icon.png");
     QItemSelectionModel *select = ui->tableemp->selectionModel();
 
    if( select->hasSelection() ) //check if has selection
@@ -835,6 +951,7 @@ void tahaa::on_ModifierEmp_clicked() {
           msgBox.setWindowTitle( "Modifier un employé");
           msgBox.setText(tr("Sélectionner un employé à modifier d'abord !"));
           msgBox.addButton(tr("D'accord"), QMessageBox::NoRole);
+msgBox.setWindowIcon(QIcon(pixmap));
           msgBox.exec();
 
 
@@ -845,6 +962,7 @@ void tahaa::on_ModifierEmp_clicked() {
 
 }
 void tahaa::on_modif222_clicked() {
+    QPixmap pixmap = QPixmap("icon/icon.png");
     int id = ui->idtache->text().toInt();
     QString cin = ui->comboBox_2->currentText();
     QString nom=ui->nomtache->text();
@@ -863,6 +981,8 @@ QString statut = ui->statuttache->currentText();
          msgBox.setWindowTitle( "Modifier une tâche");
          msgBox.setText(tr("tache modifié avec succée. !"));
          msgBox.addButton(tr("D'accord"), QMessageBox::NoRole);
+         msgBox.setWindowIcon(QIcon(pixmap));
+
          msgBox.exec();
 
 //QMessageBox::information(nullptr, QObject::tr("Modifier une tache"),
@@ -877,6 +997,9 @@ StatsTaches() ;
          msgBox.setWindowTitle( "Modifier une tâche");
          msgBox.setText(tr("Erreur dans les champs !"));
          msgBox.addButton(tr("D'accord"), QMessageBox::NoRole);
+
+         msgBox.setWindowIcon(QIcon(pixmap));
+
          msgBox.exec();
      // QMessageBox::critical(nullptr, QObject::tr("Modifier une tache"),
              //     QObject::tr("Erreur dans les champs !\n"
@@ -886,7 +1009,7 @@ StatsTaches() ;
 
 }
 void tahaa::on_modifier1_clicked() {
-
+    QPixmap pixmap = QPixmap("icon/icon.png");
 
                   QString cin = ui->lineEdit_id->text();
                   QString nom= ui->lineEdit_nom->text();
@@ -906,6 +1029,7 @@ void tahaa::on_modifier1_clicked() {
                        msgBox.setWindowTitle( "Modifier un employé");
                        msgBox.setText(tr("Employé modifié avec succée !"));
                        msgBox.addButton(tr("D'accord"), QMessageBox::NoRole);
+                        msgBox.setWindowIcon(QIcon(pixmap));
                        msgBox.exec();
 
 
@@ -916,6 +1040,7 @@ void tahaa::on_modifier1_clicked() {
                     msgBox2.setWindowTitle( "Modifier un employé");
                     msgBox2.setText(tr("Erreur dans les champs !"));
                     msgBox2.addButton(tr("Fermer"), QMessageBox::NoRole);
+                     msgBox2.setWindowIcon(QIcon(pixmap));
                     msgBox2.exec();
 
 
@@ -928,7 +1053,7 @@ void tahaa::on_modifier1_clicked() {
 
 void tahaa::on_modifier22_clicked() {
 
-
+QPixmap pixmap = QPixmap("icon/icon.png");
     QItemSelectionModel *select = ui->tableView2->selectionModel();
 
    if( select->hasSelection() ) //check if has selection
@@ -992,6 +1117,8 @@ void tahaa::on_modifier22_clicked() {
                           msgBox.setWindowTitle( "Modifier une tâche");
                           msgBox.setText(tr("Sélectionner une tâche à modifier d'abord. !"));
                           msgBox.addButton(tr("D'accord"), QMessageBox::NoRole);
+
+                                msgBox.setWindowIcon(QIcon(pixmap));
                           msgBox.exec();
 
 
@@ -1141,7 +1268,8 @@ ui->ez->setCurrentIndex(i);
 }
 
 void tahaa::on_lineEdit_id_editingFinished()
-{
+{QPixmap pixmap = QPixmap("icon/icon.png");
+
     if (ui->lineEdit_id->text().length()!=8 )  {
 
         QMessageBox msgBox;
@@ -1149,6 +1277,7 @@ void tahaa::on_lineEdit_id_editingFinished()
                            msgBox.setWindowTitle( "Numero CIN");
                            msgBox.setText(tr("CIN foit être de 8 chiffres  !"));
                            msgBox.addButton(tr("Fermer"), QMessageBox::NoRole);
+                            msgBox.setWindowIcon(QIcon(pixmap));
                            msgBox.exec();
 
 
@@ -1156,7 +1285,7 @@ void tahaa::on_lineEdit_id_editingFinished()
 } }
 
 void tahaa::on_lineEdit_nom_textEdited(const QString &arg1)
-{
+{QPixmap pixmap = QPixmap("icon/icon.png");
 int L =ui->lineEdit_nom->text().length() ;
 for (int i=0;i<L;i++ )
     if (ui->lineEdit_nom->text().at(i).isDigit())
@@ -1166,6 +1295,7 @@ for (int i=0;i<L;i++ )
                                msgBox.setWindowTitle( "Nom Employee");
                                msgBox.setText(tr("Le nom ne doit pas contenir des chiffres  !"));
                                msgBox.addButton(tr("Fermer"), QMessageBox::NoRole);
+                               msgBox.setWindowIcon(QIcon(pixmap));
                                msgBox.exec();
 
 
@@ -1175,7 +1305,7 @@ for (int i=0;i<L;i++ )
 }
 
 void tahaa::on_lineEdit_prenom_textEdited(const QString &arg1)
-{
+{QPixmap pixmap = QPixmap("icon/icon.png");
     int L =ui->lineEdit_prenom->text().length() ;
     for (int i=0;i<L;i++ )
         if (ui->lineEdit_prenom->text().at(i).isDigit()) {
@@ -1184,6 +1314,7 @@ void tahaa::on_lineEdit_prenom_textEdited(const QString &arg1)
                                msgBox.setWindowTitle( "Prenom Employee");
                                msgBox.setText(tr("Le prenom ne doit pas contenir des chiffres  !"));
                                msgBox.addButton(tr("Fermer"), QMessageBox::NoRole);
+                               msgBox.setWindowIcon(QIcon(pixmap));
                                msgBox.exec();
 
 
@@ -1191,7 +1322,7 @@ void tahaa::on_lineEdit_prenom_textEdited(const QString &arg1)
 
 
 void tahaa::on_lineEdit_email_editingFinished()
-{
+{QPixmap pixmap = QPixmap("icon/icon.png");
     if ( ui->lineEdit_email->text().indexOf("@")<0 ){
 
         QMessageBox msgBox;
@@ -1199,6 +1330,7 @@ void tahaa::on_lineEdit_email_editingFinished()
                            msgBox.setWindowTitle( "Email Employee");
                            msgBox.setText(tr("Entrer une email valide ! ( @ )"));
                            msgBox.addButton(tr("D'accord"), QMessageBox::NoRole);
+                           msgBox.setWindowIcon(QIcon(pixmap));
                            msgBox.exec();
 
 
@@ -1212,6 +1344,7 @@ void tahaa::on_lineEdit_email_editingFinished()
                            msgBox2.setWindowTitle( "Email Employee");
                            msgBox2.setText(tr("Entrer une email valide ! ( . )"));
                            msgBox2.addButton(tr("D'accord"), QMessageBox::NoRole);
+                           msgBox2.setWindowIcon(QIcon(pixmap));
                            msgBox2.exec();
 
 }}
@@ -1461,3 +1594,123 @@ void tahaa::on_emplystats_clicked()
 }
 
 
+
+void tahaa::on_pushButton_clicked()
+{
+
+    tahaa::hide();
+
+}
+
+void tahaa::icon()
+{
+
+
+//iconnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn
+    QIcon icon2;
+    icon2.addFile(QString::fromUtf8("reservation.png"), QSize(), QIcon::Normal, QIcon::Off);
+   ui->emplystats->setIcon(icon2);
+   ui->emplystats->setIconSize(QSize(40, 40));
+   QIcon icon3;
+   icon3.addFile(QString::fromUtf8("add.png"), QSize(), QIcon::Normal, QIcon::Off);
+  ui->pb_ajouter->setIcon(icon3);
+  ui->pb_ajouter->setIconSize(QSize(30, 30));
+          QIcon icon4;
+          icon4.addFile(QString::fromUtf8("search.png"), QSize(), QIcon::Normal, QIcon::Off);
+         ui->pb_rechercher->setIcon(icon4);
+         ui->pb_rechercher->setIconSize(QSize(20, 20));
+
+                 QIcon icon5;
+                 icon5.addFile(QString::fromUtf8("delete.png"), QSize(), QIcon::Normal, QIcon::Off);
+                ui->pb_suppr->setIcon(icon5);
+                ui->pb_suppr->setIconSize(QSize(20, 20));
+                QIcon icon6;
+                icon6.addFile(QString::fromUtf8("save.png"), QSize(), QIcon::Normal, QIcon::Off);
+               ui->pdf->setIcon(icon6);
+               ui->pdf->setIconSize(QSize(40, 40));
+                       QIcon icon7;
+                       icon7.addFile(QString::fromUtf8("printer.png"), QSize(), QIcon::Normal, QIcon::Off);
+                      ui->imprimer1->setIcon(icon7);
+                      ui->imprimer1->setIconSize(QSize(40, 40));
+                              QIcon icon8;
+                              icon8.addFile(QString::fromUtf8("cross.png"), QSize(), QIcon::Normal, QIcon::Off);
+                             ui->resetpb->setIcon(icon8);
+                             ui->resetpb->setIconSize(QSize(20, 20));
+                                     QIcon icon9;
+                                     icon9.addFile(QString::fromUtf8("modif.png"), QSize(), QIcon::Normal, QIcon::Off);
+                                    ui->modifier1->setIcon(icon9);
+                                    ui->modifier1->setIconSize(QSize(20, 20));
+                                    QIcon icon10;
+                                    icon10.addFile(QString::fromUtf8("list.png"), QSize(), QIcon::Normal, QIcon::Off);
+                                   ui->afficher->setIcon(icon10);
+                                   ui->afficher->setIconSize(QSize(20, 20));
+                                  QIcon icon11;
+                    icon11.addFile(QString::fromUtf8("modif2.png"), QSize(), QIcon::Normal, QIcon::Off);
+              ui->ModifierEmp->setIcon(icon11);
+                          ui->ModifierEmp->setIconSize(QSize(20, 20));
+
+
+
+                          QIcon icon22;
+                          icon22.addFile(QString::fromUtf8("reservation.png"), QSize(), QIcon::Normal, QIcon::Off);
+                         ui->stats ->setIcon(icon22);
+                         ui->stats ->setIconSize(QSize(40, 40));
+                         QIcon icon33;
+                         icon33.addFile(QString::fromUtf8("add.png"), QSize(), QIcon::Normal, QIcon::Off);
+                        ui->pb_ajouter2  ->setIcon(icon33);
+                        ui->pb_ajouter2  ->setIconSize(QSize(30, 30));
+                                QIcon icon44;
+                                icon44.addFile(QString::fromUtf8("search.png"), QSize(), QIcon::Normal, QIcon::Off);
+                               ui->recherche22  ->setIcon(icon44);
+                               ui->recherche22  ->setIconSize(QSize(20, 20));
+
+                                       QIcon icon55;
+                                       icon55.addFile(QString::fromUtf8("delete.png"), QSize(), QIcon::Normal, QIcon::Off);
+                                      ui->supprim2tache ->setIcon(icon55);
+                                      ui->supprim2tache ->setIconSize(QSize(20, 20));
+                                      QIcon icon66;
+                                      icon66.addFile(QString::fromUtf8("save.png"), QSize(), QIcon::Normal, QIcon::Off);
+                                     ui->pdf22 ->setIcon(icon66);
+                                     ui->pdf22 ->setIconSize(QSize(40, 40));
+                                             QIcon icon77;
+                                             icon77.addFile(QString::fromUtf8("printer.png"), QSize(), QIcon::Normal, QIcon::Off);
+                                            ui->impr2 ->setIcon(icon77);
+                                            ui->impr2 ->setIconSize(QSize(40, 40));
+                                                    QIcon icon88;
+                                                    icon88.addFile(QString::fromUtf8("cross.png"), QSize(), QIcon::Normal, QIcon::Off);
+                                                   ui->resetpb2->setIcon(icon88);
+                                                   ui->resetpb2->setIconSize(QSize(20, 20));
+                                                           QIcon icon99;
+                                                           icon99.addFile(QString::fromUtf8("modif.png"), QSize(), QIcon::Normal, QIcon::Off);
+                                                          ui->modif222 ->setIcon(icon99);
+                                                          ui->modif222 ->setIconSize(QSize(20, 20));
+                                                          QIcon icon100;
+                                                          icon100.addFile(QString::fromUtf8("list.png"), QSize(), QIcon::Normal, QIcon::Off);
+                                                         ui->affichertache ->setIcon(icon100);
+                                                         ui->affichertache ->setIconSize(QSize(20, 20));
+                                                        QIcon icon111;
+                                          icon111.addFile(QString::fromUtf8("modif2.png"), QSize(), QIcon::Normal, QIcon::Off);
+                                    ui->modifier22 ->setIcon(icon111);
+                                                ui->modifier22 ->setIconSize(QSize(20, 20));
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+void tahaa::on_pushButton_2_clicked()
+{
+     tahaa::hide();
+}

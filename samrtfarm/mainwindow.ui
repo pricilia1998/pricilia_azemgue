@@ -10,6 +10,18 @@
     <height>640</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>1005</width>
+    <height>640</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1005</width>
+    <height>640</height>
+   </size>
+  </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
@@ -21,14 +33,14 @@
    <widget class="QStackedWidget" name="stackedWidget">
     <property name="geometry">
      <rect>
-      <x>189</x>
-      <y>69</y>
-      <width>711</width>
-      <height>511</height>
+      <x>19</x>
+      <y>29</y>
+      <width>991</width>
+      <height>601</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">border-image : url(175640.jpg); 
+     <string notr="true">border-image :none
 </string>
     </property>
     <property name="currentIndex">
@@ -38,11 +50,29 @@
      <widget class="QPushButton" name="pushButton">
       <property name="geometry">
        <rect>
-        <x>290</x>
-        <y>290</y>
-        <width>93</width>
-        <height>28</height>
+        <x>220</x>
+        <y>220</y>
+        <width>171</width>
+        <height>51</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">
+	background-color:#b0b0b0;
+	border-radius:15px;
+	border:1px solid #c7e3ff;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+    font: bold ;
+	font-size:17px;
+	padding:16px 31px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #2f6627;
+
+
+</string>
       </property>
       <property name="text">
        <string>Se connecter</string>
@@ -52,80 +82,181 @@
       <property name="geometry">
        <rect>
         <x>200</x>
-        <y>200</y>
+        <y>150</y>
         <width>271</width>
         <height>41</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">type:password;</string>
+       <string notr="true">background-color: rgba(0, 0, 0, 0);
+
+	font-family:Arial;
+    
+	font-size:20px;
+
+
+</string>
       </property>
      </widget>
      <widget class="QLineEdit" name="username">
       <property name="geometry">
        <rect>
         <x>200</x>
-        <y>140</y>
+        <y>70</y>
         <width>271</width>
         <height>41</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">type:password;</string>
+       <string notr="true">background-color: rgba(0, 0, 0, 0);
+
+	font-family:Arial;
+    
+	font-size:20px;
+
+
+</string>
       </property>
+     </widget>
+     <widget class="QWidget" name="layoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>50</y>
+        <width>165</width>
+        <height>151</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <widget class="QLabel" name="label">
+         <property name="styleSheet">
+          <string notr="true">
+	font-family:Arial;
+    font: bold ;
+	font-size:20px;
+
+</string>
+         </property>
+         <property name="text">
+          <string>Nom d'utilisateur</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_2">
+         <property name="styleSheet">
+          <string notr="true">
+	font-family:Arial;
+    font: bold ;
+	font-size:20px;
+
+</string>
+         </property>
+         <property name="text">
+          <string>Mot de passe</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </widget>
     </widget>
     <widget class="QWidget" name="page_2">
-     <widget class="QPushButton" name="pushButton_2">
-      <property name="geometry">
-       <rect>
-        <x>480</x>
-        <y>30</y>
-        <width>93</width>
-        <height>28</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>PushButton</string>
-      </property>
-     </widget>
      <widget class="QPushButton" name="pushButton_3">
       <property name="geometry">
        <rect>
-        <x>70</x>
-        <y>120</y>
+        <x>20</x>
+        <y>-10</y>
         <width>151</width>
-        <height>51</height>
+        <height>211</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">
+border-image:url(workers.png);
+</string>
+      </property>
       <property name="text">
-       <string>emp</string>
+       <string/>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButton_4">
       <property name="geometry">
        <rect>
-        <x>270</x>
-        <y>120</y>
-        <width>151</width>
-        <height>51</height>
+        <x>310</x>
+        <y>0</y>
+        <width>131</width>
+        <height>181</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">border-image:url(employe.png);</string>
+      </property>
       <property name="text">
-       <string>nour</string>
+       <string/>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_5">
+     <widget class="QPushButton" name="pushButton_2">
       <property name="geometry">
        <rect>
-        <x>480</x>
-        <y>120</y>
-        <width>171</width>
-        <height>61</height>
+        <x>830</x>
+        <y>550</y>
+        <width>131</width>
+        <height>31</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">
+	font-family:Arial;
+    font: bold ;
+	font-size:15px;
+
+</string>
+      </property>
       <property name="text">
-       <string>PushButton</string>
+       <string>Se déconecter</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_3">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>210</y>
+        <width>221</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">
+	font-family:Arial;
+    font: bold ;
+	font-size:18px;
+
+</string>
+      </property>
+      <property name="text">
+       <string>Employés et Tâches</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_4">
+      <property name="geometry">
+       <rect>
+        <x>250</x>
+        <y>210</y>
+        <width>291</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">
+	font-family:Arial;
+    font: bold ;
+	font-size:18px;
+
+</string>
+      </property>
+      <property name="text">
+       <string>Fournisseurs et Nourritures</string>
       </property>
      </widget>
     </widget>

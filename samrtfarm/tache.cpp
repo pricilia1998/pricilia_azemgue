@@ -86,7 +86,7 @@ QSqlQueryModel * tache::rechercher(QString n, QString tri , QDate d) {
 
 
 
-  model->setQuery("select * from tache where ((nom LIKE '"+n+"%' ) ");
+  model->setQuery("select * from tache where (nom LIKE '"+n+"%' ) ");
 
 
                 return  model;

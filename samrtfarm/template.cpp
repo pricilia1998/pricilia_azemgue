@@ -6,6 +6,15 @@
 #include <QMessageBox>
 #include  <QDebug>
 
+#include <QDate>
+#include <QModelIndex>
+#include <QtPrintSupport>
+#include <QPrinter>
+#include <QPrintDialog>
+#include <QMessageBox>
+#include  <QDebug>
+
+
 using namespace std;
 
 Template::Template(QWidget *parent) :
@@ -101,10 +110,19 @@ void Template::on_ajouterNour_clicked()
       if(test)
     {
 
-    ui->tableNour->setModel(tmpnourriture.afficher());
-    QMessageBox::information(nullptr, QObject::tr("Ajouter une nourriture"),
-                      QObject::tr("nourriture ajouté.\n"
-                                  "Click Cancel to exit."), QMessageBox::Cancel);
+    QMessageBox msgBox;
+                       msgBox.setIcon(QMessageBox::Information);
+                       msgBox.setWindowTitle( "Ajouter une nourriture");
+                       msgBox.setText(tr("Nourriture ajoutée avec succès"));
+                       msgBox.addButton(tr("Fermer"), QMessageBox::NoRole);
+
+                       msgBox.exec();
+
+ui->tableNour->setModel(tmpnourriture.afficher());
+
+/*QMessageBox::information(nullptr, QObject::tr("Ajouter une nourriture"),
+                QObject::tr("nourriture ajouté.\n"
+                            "Click Cancel to exit."), QMessageBox::Cancel);*/
     ui->idNour->clear();
 
    QVector<int> tabId1= tmpnourriture.genererID();
@@ -124,9 +142,20 @@ void Template::on_ajouterNour_clicked()
 
     }
       else
-          QMessageBox::critical(nullptr, QObject::tr("Ajouter une nourriture"),
+      {
+          QMessageBox msgBox;
+                  msgBox.setIcon(QMessageBox::Critical);
+                             msgBox.setWindowTitle( "Ajouter une nourriture");
+                             msgBox.setText(tr("Erreur dans les champs"));
+                             msgBox.addButton(tr("Fermer"), QMessageBox::NoRole);
+
+                             msgBox.exec();
+
+      }
+          /*QMessageBox::critical(nullptr, QObject::tr("Ajouter une nourriture"),
                       QObject::tr("Erreur !.\n"
                                   "Click Cancel to exit."), QMessageBox::Cancel);
+*/
 }
 
 void Template::on_supNour_clicked()
@@ -136,17 +165,36 @@ void Template::on_supNour_clicked()
 
     if(test)
     {
+        QMessageBox msgBox1;
+                           msgBox1.setIcon(QMessageBox::Information);
+                           msgBox1.setWindowTitle( "Supprimer une nourriture");
+                           msgBox1.setText(tr("Nourriture supprimée avec succès"));
+                           msgBox1.addButton(tr("Fermer"), QMessageBox::NoRole);
+
+                           msgBox1.exec();
+
         ui->tableNour->setModel(tmpnourriture.afficher());//refresh
-        QMessageBox::information(nullptr, QObject::tr("Supprimer une nourriture"),
+
+        /*QMessageBox::information(nullptr, QObject::tr("Supprimer une nourriture"),
                     QObject::tr("Nourriture supprimé.\n"
-                                "Click Cancel to exit."), QMessageBox::Cancel);
+                                "Click Cancel to exit."), QMessageBox::Cancel); */
         ui->idNour2->setText("");
 
     }
     else
-        QMessageBox::critical(nullptr, QObject::tr("Supprimer une nourriture"),
+    {
+        QMessageBox msgBox1;
+                msgBox1.setIcon(QMessageBox::Critical);
+                           msgBox1.setWindowTitle( "Supprimer une nourriture");
+                           msgBox1.setText(tr("Erreur dans les champs"));
+                           msgBox1.addButton(tr("Fermer"), QMessageBox::NoRole);
+
+                           msgBox1.exec();
+
+    }
+        /*QMessageBox::critical(nullptr, QObject::tr("Supprimer une nourriture"),
                     QObject::tr("Erreur !.\n"
-                                "Click Cancel to exit."), QMessageBox::Cancel);
+                                "Click Cancel to exit."), QMessageBox::Cancel); */
 }
 
 
@@ -160,16 +208,31 @@ void Template::on_supFour_clicked()
     if(test)
     {
         ui->tableFour->setModel(tmpfournisseur.afficher());//refresh
-        QMessageBox::information(nullptr, QObject::tr("Supprimer un fournisseur"),
-                    QObject::tr("Fournisseur supprimé.\n"
-                                "Click Cancel to exit."), QMessageBox::Cancel);
+        QMessageBox msgBox6;
+                           msgBox6.setIcon(QMessageBox::Information);
+                           msgBox6.setWindowTitle( "Supprimer un fournisseur");
+                           msgBox6.setText(tr("Fournisseur supprimé avec succès"));
+                           msgBox6.addButton(tr("Fermer"), QMessageBox::NoRole);
+
+                           msgBox6.exec();
+
         ui->idFour2->setText("");
 
     }
     else
-        QMessageBox::critical(nullptr, QObject::tr("Supprimer un fournisseur"),
+    {
+        QMessageBox msgBox6;
+                msgBox6.setIcon(QMessageBox::Critical);
+                           msgBox6.setWindowTitle( "Supprimer une nourriture");
+                           msgBox6.setText(tr("Erreur dans les champs"));
+                           msgBox6.addButton(tr("Fermer"), QMessageBox::NoRole);
+
+                           msgBox6.exec();
+
+    }
+        /*QMessageBox::critical(nullptr, QObject::tr("Supprimer un fournisseur"),
                     QObject::tr("Erreur !.\n"
-                                "Click Cancel to exit."), QMessageBox::Cancel);
+                                "Click Cancel to exit."), QMessageBox::Cancel); */
 }
 
 /**
@@ -198,10 +261,19 @@ void Template::on_ajouterFour_clicked()
     if(test)
   {
 
-  ui->tableFour->setModel(tmpfournisseur.afficher());
-  QMessageBox::information(nullptr, QObject::tr("Ajouter un fournisseur"),
-                    QObject::tr("fournisseur ajouté.\n"
-                                "Click Cancel to exit."), QMessageBox::Cancel);
+        QMessageBox msgBox2;
+                           msgBox2.setIcon(QMessageBox::Information);
+                           msgBox2.setWindowTitle( "Ajouter un fournisseur");
+                           msgBox2.setText(tr("Fournisseur ajouté avec succès"));
+                           msgBox2.addButton(tr("Fermer"), QMessageBox::NoRole);
+
+                           msgBox2.exec();
+
+        ui->tableFour->setModel(tmpfournisseur.afficher());//refresh
+
+       /* QMessageBox::information(nullptr, QObject::tr("Supprimer un fournisseur"),
+                    QObject::tr("Fournisseur supprimé.\n"
+                                "Click Cancel to exit."), QMessageBox::Cancel); */
 
    ui->idFour->clear();
 
@@ -219,9 +291,19 @@ void Template::on_ajouterFour_clicked()
 
   }
     else
-        QMessageBox::critical(nullptr, QObject::tr("Ajouter un fournisseur"),
+    {
+        QMessageBox msgBox2;
+                msgBox2.setIcon(QMessageBox::Critical);
+                           msgBox2.setWindowTitle( "Ajouter un fournisseur");
+                           msgBox2.setText(tr("Erreur dans les champs"));
+                           msgBox2.addButton(tr("Fermer"), QMessageBox::NoRole);
+
+                           msgBox2.exec();
+
+    }
+       /* QMessageBox::critical(nullptr, QObject::tr("Supprimer un fournisseur"),
                     QObject::tr("Erreur !.\n"
-                                "Click Cancel to exit."), QMessageBox::Cancel);
+                                "Click Cancel to exit."), QMessageBox::Cancel); */
 }
 
 void Template::on_modNour_clicked()
@@ -289,10 +371,14 @@ void Template::on_miseajourNour_clicked()
     {
 
     ui->tableNour->setModel(tmpnourriture.afficher());
-    QMessageBox::information(nullptr, QObject::tr("Modifier une nourriture"),
-                      QObject::tr("nourriture Modifié.\n"
-                                  "Click Cancel to exit."), QMessageBox::Cancel);
 
+    QMessageBox msgBox4;
+                       msgBox4.setIcon(QMessageBox::Information);
+                       msgBox4.setWindowTitle( "Modifier une nourriture");
+                       msgBox4.setText(tr("Nourriture modifiée avec succès"));
+                       msgBox4.addButton(tr("Fermer"), QMessageBox::NoRole);
+
+                       msgBox4.exec();
     ui->idNour->clear();
 
    QVector<int> tabId1= tmpnourriture.genererID();
@@ -314,9 +400,20 @@ void Template::on_miseajourNour_clicked()
 
     }
       else
-          QMessageBox::critical(nullptr, QObject::tr("Modifier une nourriture"),
+      {
+          QMessageBox msgBox4;
+                  msgBox4.setIcon(QMessageBox::Critical);
+                             msgBox4.setWindowTitle( "Modifier une nourriture");
+                             msgBox4.setText(tr("Erreur dans les champs"));
+                             msgBox4.addButton(tr("Fermer"), QMessageBox::NoRole);
+
+                            msgBox4.exec();
+       }
+
+
+          /*QMessageBox::critical(nullptr, QObject::tr("Modifier une nourriture"),
                       QObject::tr("Erreur !.\n"
-                                  "Click Cancel to exit."), QMessageBox::Cancel);
+                                  "Click Cancel to exit."), QMessageBox::Cancel); */
 
 }
 
@@ -339,9 +436,18 @@ void Template::on_miseajourFour_clicked()
   {
 
   ui->tableFour->setModel(tmpfournisseur.afficher());
-  QMessageBox::information(nullptr, QObject::tr("Modifier un fournisseur"),
+
+  QMessageBox msgBox5;
+                     msgBox5.setIcon(QMessageBox::Information);
+                     msgBox5.setWindowTitle( "Modifier un fournisseur");
+                     msgBox5.setText(tr("Fournisseur modifiée avec succès"));
+                     msgBox5.addButton(tr("Fermer"), QMessageBox::NoRole);
+
+                     msgBox5.exec();
+
+  /*QMessageBox::information(nullptr, QObject::tr("Modifier un fournisseur"),
                     QObject::tr("fournisseur Modifié.\n"
-                                "Click Cancel to exit."), QMessageBox::Cancel);
+                                "Click Cancel to exit."), QMessageBox::Cancel); */
 
    ui->idFour->clear();
 
@@ -359,9 +465,19 @@ void Template::on_miseajourFour_clicked()
 
   }
     else
-        QMessageBox::critical(nullptr, QObject::tr("Modifier un fournisseur"),
+    {
+        QMessageBox msgBox5;
+                msgBox5.setIcon(QMessageBox::Critical);
+                           msgBox5.setWindowTitle( "Modifier un fournisseur");
+                           msgBox5.setText(tr("Erreur dans les champs"));
+                           msgBox5.addButton(tr("Fermer"), QMessageBox::NoRole);
+
+                           msgBox5.exec();
+
+    }
+        /*QMessageBox::critical(nullptr, QObject::tr("Modifier un fournisseur"),
                     QObject::tr("Erreur !.\n"
-                                "Click Cancel to exit."), QMessageBox::Cancel);
+                                "Click Cancel to exit."), QMessageBox::Cancel); */
 }
 
 
@@ -434,4 +550,125 @@ void Template::on_nomNour_textEdited(const QString &arg1)
     QRegExpValidator *ipValidator = new QRegExpValidator(ipRegex, this);
     ui->nomNour->setValidator(ipValidator);
     ui->nomNour->setText(arg1);
+}
+
+/*
+ void Template::on_pushButton_clicked()
+{
+
+    QMessageBox msgBox;
+                       msgBox.setIcon(QMessageBox::Warning);
+                       msgBox.setWindowTitle( "Email Employee");
+                       msgBox.setText(tr("Entrer une email valide ! ( @ )"));
+                       msgBox.addButton(tr("D'accord"), QMessageBox::NoRole);
+
+                       msgBox.exec();
+}
+*/
+void Template::on_imprimerNour_clicked()
+{
+    QString strStream;
+              QTextStream out(&strStream);
+
+              const int rowCount = ui->tableNour->model()->rowCount();
+              const int columnCount = ui->tableNour->model()->columnCount();
+
+              out <<  "<html>\n"
+                  "<head>\n"
+                  "<meta Content=\"Text/html; charset=Windows-1251\">\n"
+                  <<  QString("<title>%1</title>\n").arg("strTitle")
+                  <<  "</head>\n"
+                  "<body bgcolor=#ffffff link=#5000A0>\n"
+
+                     // "<align='right'> " << datefich << "</align>"
+                  "<center> <H1>Liste des Nourritures</H1></br></br><table border=1 cellspacing=0 cellpadding=2>\n";
+
+              // headers
+              out << "<thead><tr bgcolor=#f0f0f0> <th>Numero</th>";
+              for (int column = 0; column < columnCount; column++)
+                  if (!ui->tableNour->isColumnHidden(column))
+                      out << QString("<th>%1</th>").arg(ui->tableNour->model()->headerData(column, Qt::Horizontal).toString());
+              out << "</tr></thead>\n";
+
+              // data table
+              for (int row = 0; row < rowCount; row++) {
+                  out << "<tr> <td bkcolor=0>" << row+1 <<"</td>";
+                  for (int column = 0; column < columnCount; column++) {
+                      if (!ui->tableNour->isColumnHidden(column)) {
+                          QString data = ui->tableNour->model()->data(ui->tableNour->model()->index(row, column)).toString().simplified();
+                          out << QString("<td bkcolor=0>%1</td>").arg((!data.isEmpty()) ? data : QString("&nbsp;"));
+                      }
+                  }
+                  out << "</tr>\n";
+              }
+              out <<  "</table> </center>\n"
+                  "</body>\n"
+                  "</html>\n";
+
+        QString fileName = QFileDialog::getSaveFileName((QWidget* )0, "Sauvegarder en PDF", QString(), "*.pdf");
+          if (QFileInfo(fileName).suffix().isEmpty()) { fileName.append(".pdf"); }
+
+          QPrinter printer(QPrinter::PrinterResolution);
+          printer.setOutputFormat(QPrinter::PdfFormat);
+         printer.setPaperSize(QPrinter::A4);
+        printer.setOutputFileName(fileName);
+
+          QTextDocument doc;
+          doc.setHtml(strStream);
+          doc.setPageSize(printer.pageRect().size()); // This is necessary if you want to hide the page number
+          doc.print(&printer);
+}
+
+void Template::on_imprimerFour_clicked()
+{
+    QString strStream;
+              QTextStream out(&strStream);
+
+              const int rowCount = ui->tableFour->model()->rowCount();
+              const int columnCount = ui->tableFour->model()->columnCount();
+
+              out <<  "<html>\n"
+                  "<head>\n"
+                  "<meta Content=\"Text/html; charset=Windows-1251\">\n"
+                  <<  QString("<title>%1</title>\n").arg("strTitle")
+                  <<  "</head>\n"
+                  "<body bgcolor=#ffffff link=#5000A0>\n"
+
+                     // "<align='right'> " << datefich << "</align>"
+                  "<center> <H1>Liste des Nourritures</H1></br></br><table border=1 cellspacing=0 cellpadding=2>\n";
+
+              // headers
+              out << "<thead><tr bgcolor=#f0f0f0> <th>Numero</th>";
+              for (int column = 0; column < columnCount; column++)
+                  if (!ui->tableFour->isColumnHidden(column))
+                      out << QString("<th>%1</th>").arg(ui->tableFour->model()->headerData(column, Qt::Horizontal).toString());
+              out << "</tr></thead>\n";
+
+              // data table
+              for (int row = 0; row < rowCount; row++) {
+                  out << "<tr> <td bkcolor=0>" << row+1 <<"</td>";
+                  for (int column = 0; column < columnCount; column++) {
+                      if (!ui->tableFour->isColumnHidden(column)) {
+                          QString data = ui->tableFour->model()->data(ui->tableFour->model()->index(row, column)).toString().simplified();
+                          out << QString("<td bkcolor=0>%1</td>").arg((!data.isEmpty()) ? data : QString("&nbsp;"));
+                      }
+                  }
+                  out << "</tr>\n";
+              }
+              out <<  "</table> </center>\n"
+                  "</body>\n"
+                  "</html>\n";
+
+        QString fileName = QFileDialog::getSaveFileName((QWidget* )0, "Sauvegarder en PDF", QString(), "*.pdf");
+          if (QFileInfo(fileName).suffix().isEmpty()) { fileName.append(".pdf"); }
+
+          QPrinter printer(QPrinter::PrinterResolution);
+          printer.setOutputFormat(QPrinter::PdfFormat);
+         printer.setPaperSize(QPrinter::A4);
+        printer.setOutputFileName(fileName);
+
+          QTextDocument doc;
+          doc.setHtml(strStream);
+          doc.setPageSize(printer.pageRect().size()); // This is necessary if you want to hide the page number
+          doc.print(&printer);
 }

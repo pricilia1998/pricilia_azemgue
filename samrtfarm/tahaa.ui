@@ -6,12 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1573</width>
-    <height>1024</height>
+    <width>1441</width>
+    <height>722</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color:white;</string>
   </property>
   <widget class="QTabWidget" name="ez">
    <property name="enabled">
@@ -29,7 +32,7 @@
     <string notr="true"/>
    </property>
    <property name="currentIndex">
-    <number>1</number>
+    <number>0</number>
    </property>
    <widget class="QWidget" name="tab">
     <attribute name="title">
@@ -131,7 +134,7 @@
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">
+       <string notr="true">background-color:#faf0fa;
 	font-family:Arial;
     font: none ;
 	font-size:15px;
@@ -168,7 +171,7 @@
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">
+       <string notr="true">background-color:#faf0fa;
 	font-family:Arial;
     font: none ;
 	font-size:15px;
@@ -185,7 +188,7 @@
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">
+       <string notr="true">background-color:#faf0fa;
 	font-family:Arial;
     font: none ;
 	font-size:15px;
@@ -222,7 +225,7 @@
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">
+       <string notr="true">background-color:#faf0fa;
 	font-family:Arial;
     font: none ;
 	font-size:15px;
@@ -279,7 +282,7 @@
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">
+       <string notr="true">background-color:#faf0fa;
 	font-family:Arial;
     font: none ;
 	font-size:15px;
@@ -316,7 +319,7 @@
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">
+       <string notr="true">background-color:#faf0fa;
 	font-family:Arial;
     font: none ;
 	font-size:15px;
@@ -401,7 +404,7 @@
 </string>
          </property>
          <property name="text">
-          <string>Ajouter</string>
+          <string> Ajouter</string>
          </property>
         </widget>
        </item>
@@ -454,7 +457,7 @@
 </string>
          </property>
          <property name="text">
-          <string>Statistiques</string>
+          <string>     Statistiques</string>
          </property>
         </widget>
        </item>
@@ -471,6 +474,7 @@
     font: bold ;
 	font-size:17px;
 	padding:16px 31px ;
+
 	
 </string>
          </property>
@@ -550,7 +554,7 @@ background-color:#263666;
      <widget class="QPushButton" name="pb_rechercher">
       <property name="geometry">
        <rect>
-        <x>380</x>
+        <x>350</x>
         <y>30</y>
         <width>151</width>
         <height>31</height>
@@ -786,10 +790,27 @@ background-color:#de3a0d;
       </property>
      </widget>
     </widget>
+    <widget class="QPushButton" name="pushButton">
+     <property name="geometry">
+      <rect>
+       <x>1392</x>
+       <y>0</y>
+       <width>41</width>
+       <height>28</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image:url(exit.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
     <zorder>groupBox_4</zorder>
     <zorder>label_9</zorder>
     <zorder>label_10</zorder>
     <zorder>groupBox_2</zorder>
+    <zorder>pushButton</zorder>
    </widget>
    <widget class="QWidget" name="tab_2">
     <attribute name="title">
@@ -824,7 +845,7 @@ background-color:#de3a0d;
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">
+       <string notr="true">background-color:#faf0fa;
 	font-family:Arial;
     font: none ;
 	font-size:15px;
@@ -846,7 +867,7 @@ background-color:#de3a0d;
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">
+       <string notr="true">background-color:#faf0fa;
 	font-family:Arial;
     font: none ;
 	font-size:15px;
@@ -866,7 +887,7 @@ background-color:#de3a0d;
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">
+       <string notr="true">background-color:#faf0fa;
 	font-family:Arial;
     font: none ;
 	font-size:15px;
@@ -963,7 +984,7 @@ background-color:#de3a0d;
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">
+       <string notr="true">background-color:#faf0fa;
 	font-family:Arial;
     font: none ;
 	font-size:15px;
@@ -1003,8 +1024,7 @@ background-color:#de3a0d;
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">
-	font-family:Arial;
+       <string notr="true">background-color:#faf0fa;	font-family:Arial;
     font: none ;
 	font-size:15px;
 </string>
@@ -1055,7 +1075,7 @@ background-color:#de3a0d;
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">
+       <string notr="true">background-color:#faf0fa;
 	font-family:Arial;
     font: none ;
 	font-size:15px;
@@ -1079,7 +1099,7 @@ background-color:#de3a0d;
 	font-family:Arial;
     font: none ;
 	font-size:15px;
-</string>
+background-color:#faf0fa;</string>
       </property>
       <item>
        <property name="text">
@@ -1112,7 +1132,7 @@ background-color:#de3a0d;
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">
+       <string notr="true">background-color:#faf0fa;
 	font-family:Arial;
     font: none ;
 	font-size:15px;
@@ -1338,12 +1358,13 @@ background-color:#de3a0d;
        <rect>
         <x>690</x>
         <y>20</y>
-        <width>141</width>
+        <width>111</width>
         <height>31</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">font:none</string>
+       <string notr="true">font:none;
+	font-size:14px;</string>
       </property>
      </widget>
      <widget class="QWidget" name="layoutWidget_7">
@@ -1588,7 +1609,7 @@ background-color:#263666;
           <string notr="true">	font-size:14px;</string>
          </property>
          <property name="text">
-          <string>Achevées</string>
+          <string>Achevees</string>
          </property>
         </widget>
        </item>
@@ -1675,8 +1696,25 @@ background-color:#de3a0d;
       </property>
      </widget>
     </widget>
+    <widget class="QPushButton" name="pushButton_2">
+     <property name="geometry">
+      <rect>
+       <x>1390</x>
+       <y>0</y>
+       <width>41</width>
+       <height>28</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image:url(exit.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
     <zorder>groupBox_3</zorder>
     <zorder>groupBox</zorder>
+    <zorder>pushButton_2</zorder>
    </widget>
   </widget>
  </widget>
