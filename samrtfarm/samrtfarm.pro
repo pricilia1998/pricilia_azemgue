@@ -36,7 +36,16 @@ SOURCES += \
     mainwindow.cpp \
     fournisseur.cpp \
     nourriture.cpp \
-    template.cpp
+    template.cpp \
+    animal.cpp \
+    carte.cpp \
+    notification.cpp \
+    qcustomplot.cpp \
+    sirine.cpp \
+    recolte.cpp \
+    sabrine.cpp \
+    smtp.cpp \
+    zone.cpp
 
 HEADERS += \
     tache.h \
@@ -49,12 +58,23 @@ HEADERS += \
     mainwindow.h \
     fournisseur.h \
     nourriture.h \
-    template.h
+    template.h \
+    animal.h \
+    carte.h \
+    notification.h \
+    qcustomplot.h \
+    sirine.h \
+    recolte.h \
+    sabrine.h \
+    smtp.h \
+    zone.h
 
 FORMS += \
     tahaa.ui \
     mainwindow.ui \
-    template.ui
+    template.ui \
+    sirine.ui \
+    sabrine.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
